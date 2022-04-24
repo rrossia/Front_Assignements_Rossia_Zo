@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentsService } from '../shared/assignments.service';
 import { Assignement } from './assignment.modele';
 
 @Component({
@@ -14,27 +15,10 @@ export class AssignmentsComponent implements OnInit {
   assignmentSelectionne?:Assignement;
   formVisible=false;
 
-  assignements:Assignement[]= [
-    {
-      nom:'Devoir angular',
-      dateRendu:new Date('03/20/2022'),
-      rendu: false
-    },
-    {
-      nom:'Devoir oracle',
-      dateRendu:new Date('2/01/2022'),
-      rendu: true
-    },
-    {
-      nom:'Devoir big data',
-      dateRendu:new Date('03/22/2022'),
-      rendu: false
-    }
-  ]
- 
 
+  assignements:Assignement[] = [];
   
-  constructor() { 
+  constructor(private assignmentsService:AssignmentsService) { 
     setTimeout(() => {
       this.boutonInactif = false 
     }, 3000);
@@ -43,6 +27,12 @@ export class AssignmentsComponent implements OnInit {
 
   //appelé apres le constructeur et avant l'affichahge du composant
   ngOnInit(): void {
+    console.log("Dans ngOnInit, appelé avant l'affichage");
+    //on recupere ici les donnees dans le service de gestion des assignemets...
+    this.assignmentsService.getAssignments()
+    .subscribe(assignements=>{
+      this.assignements=assignements;
+    });
   }
 
   buttonClique(assignment:any){
@@ -64,8 +54,13 @@ export class AssignmentsComponent implements OnInit {
 
   onNouvelAssignement(event:Assignement){
     console.log("nampiditra vaovao!");
-    this.assignements.push(event);
-    this.formVisible = false;
+    this.assignmentsService.addAssignment(event)
+    .subscribe(message =>{
+      console.log(message);
+      this.formVisible = false;
+    } );
+    //this.assignements.push(event);
+    
   }
 
   onDeleteAssignment(event:Assignement){
