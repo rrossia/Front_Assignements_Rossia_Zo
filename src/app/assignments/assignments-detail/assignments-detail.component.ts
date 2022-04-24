@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Assignement } from '../assignment.modele';
 
 @Component({
@@ -8,6 +8,7 @@ import { Assignement } from '../assignment.modele';
 })
 export class AssignmentsDetailComponent implements OnInit {
   @Input() assignmentTransmis?: Assignement; //asiana input angalana ilay detail
+  @Output() deleteAssignment = new EventEmitter<Assignement>()
   //
 
   constructor() { }
@@ -19,6 +20,11 @@ export class AssignmentsDetailComponent implements OnInit {
     if (this.assignmentTransmis) {
       this.assignmentTransmis.rendu = true;
     }
+  }
+
+  onDelete(){
+    this.deleteAssignment.emit(this.assignmentTransmis);
+    this.assignmentTransmis = undefined;
   }
 
 }

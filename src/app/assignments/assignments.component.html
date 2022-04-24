@@ -19,6 +19,8 @@
         <mat-divider></mat-divider>
     </mat-list-item>
 </mat-list>
-<app-assignments-detail [assignmentTransmis]="assignmentSelectionne"></app-assignments-detail>
+<app-assignments-detail [assignmentTransmis]="assignmentSelectionne"
+    (deleteAssignment)="onDeleteAssignment($event)"
+></app-assignments-detail>
 </main>
 
