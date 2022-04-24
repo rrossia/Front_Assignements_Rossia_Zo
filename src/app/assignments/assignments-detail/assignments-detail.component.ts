@@ -12,24 +12,32 @@ export class AssignmentsDetailComponent implements OnInit {
   @Output() deleteAssignment = new EventEmitter<Assignement>()
   //
 
-  constructor(private assignmentsService:AssignmentsService) { }
+  constructor(private assignmentsService: AssignmentsService) { }
 
   ngOnInit(): void {
   }
-  
+
   onAssignmentRendu() {
     if (this.assignmentTransmis) {
       this.assignmentTransmis.rendu = true;
       this.assignmentsService.updateAssignment(this.assignmentTransmis)
-      .subscribe(message=>{
-        console.log(message);
-      });
+        .subscribe(message => {
+          console.log(message);
+        });
     }
   }
 
-  onDelete(){
-    this.deleteAssignment.emit(this.assignmentTransmis);
-    this.assignmentTransmis = undefined;
+  onDelete() {
+    //this.deleteAssignment.emit(this.assignmentTransmis);
+    //this.assignmentTransmis = undefined;
+
+    if (this.assignmentTransmis) {
+      this.assignmentsService.deleteAssignment(this.assignmentTransmis)
+        .subscribe((message) => {
+          console.log(message);
+          this.assignmentTransmis = undefined;
+        });
+    }
   }
 
 }
