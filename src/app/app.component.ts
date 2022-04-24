@@ -17,9 +17,9 @@ export class AppComponent {
   }
 
   constructor() { 
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.titre = "Le meilleur cours"
-    }, 5000);
+    }, 5000);*/
   }
 
 }

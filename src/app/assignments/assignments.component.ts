@@ -13,15 +13,15 @@ export class AssignmentsComponent implements OnInit {
   nomAssignment!:string;
   dateRendu!:Date;
   assignmentSelectionne?:Assignement;
-  formVisible=false;
+  //formVisible=false;
 
 
   assignements:Assignement[] = [];
   
   constructor(private assignmentsService:AssignmentsService) { 
-    setTimeout(() => {
+   /* setTimeout(() => {
       this.boutonInactif = false 
-    }, 3000);
+    }, 3000);*/
   }
   
 
@@ -39,9 +39,9 @@ export class AssignmentsComponent implements OnInit {
     console.log(assignment.nom);
   }
 
-  onAddAssignmentBtnClick(){
+ /* onAddAssignmentBtnClick(){
     this.formVisible=true;
-  }
+  }*/
 
   /*formulaireSoumis(nom:string){
     console.log(nom);
@@ -52,16 +52,16 @@ export class AssignmentsComponent implements OnInit {
     this.assignmentSelectionne=assignment;
   }
 
-  onNouvelAssignement(event:Assignement){
+ /* onNouvelAssignement(event:Assignement){
     console.log("nampiditra vaovao!");
     this.assignmentsService.addAssignment(event)
     .subscribe(message =>{
       console.log(message);
-      this.formVisible = false;
+      //this.formVisible = false;
     } );
     //this.assignements.push(event);
     
-  }
+  }*/
 
   onDeleteAssignment(event:Assignement){
     this.assignmentsService.deleteAssignment(event)

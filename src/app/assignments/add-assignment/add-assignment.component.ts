@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
+import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignement } from '../assignment.modele';
 
 @Component({
@@ -8,7 +9,7 @@ import { Assignement } from '../assignment.modele';
 })
 export class AddAssignmentComponent implements OnInit {
 //on va utiliser  un Output() pour renvoyer les assignements creer au père ou autre
-  @Output() nouvelAssignment = new EventEmitter<Assignement>();
+  //@Output() nouvelAssignment = new EventEmitter<Assignement>();
 
   boutonInactif= false;
   nomAssignment!:string;
@@ -33,7 +34,7 @@ export class AddAssignmentComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private assignmentsService:AssignmentsService) { }
 
   ngOnInit(): void {
   }
@@ -49,12 +50,13 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.nom = this.nomAssignment;
     newAssignment.dateRendu = this.dateRendu;
     newAssignment.rendu = false;
-
-    //this.assignements.push(newAssignment);
-    this.nouvelAssignment.emit(newAssignment);
+    this.assignmentsService.addAssignment(newAssignment)
+    .subscribe(message =>{
+      console.log(message);
+    })
   }
 
-  assignmentClique(assignment:Assignement){
+  /*assignmentClique(assignment:Assignement){
     this.assignmentSelectionne=assignment;
-  }
+  }*/
 }
