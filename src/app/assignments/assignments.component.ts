@@ -67,6 +67,10 @@ export class AssignmentsComponent implements OnInit {
     const pos = this.assignements.indexOf(event);
     //position, nombre d'elemnt à supprimer
     this.assignements.splice(pos,1);
+    this.assignmentsService.deleteAssignment(event)
+    .subscribe(message =>{
+      console.log(message);
+    });
   }
 
 } 
