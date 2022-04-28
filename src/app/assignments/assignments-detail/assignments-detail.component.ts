@@ -29,6 +29,17 @@ export class AssignmentsDetailComponent implements OnInit {
       })
   }
 
+  onClickEdit(){
+    this.router.navigate(["/assignment",this.assignmentTransmis?.id,"edit"]),
+    {
+      queryParams:{
+        name:"Michel Buffa",
+        job:"Professeur"
+      },
+      fragment:"edition"
+    };
+  }
+
   onAssignmentRendu() {
     if (this.assignmentTransmis) {
       this.assignmentTransmis.rendu = true;

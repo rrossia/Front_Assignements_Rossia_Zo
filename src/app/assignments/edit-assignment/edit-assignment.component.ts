@@ -20,6 +20,8 @@ export class EditAssignmentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //exemple de recup des query params et fragment
+    let queryParams = this.route.snapshot.queryParams;
     this.getAssignment();
   }
   getAssignment() {
