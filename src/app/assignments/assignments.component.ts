@@ -68,6 +68,6 @@ export class AssignmentsComponent implements OnInit {
     .subscribe(message =>{
       console.log(message);
     });
-  }
+  } 
 
 } 

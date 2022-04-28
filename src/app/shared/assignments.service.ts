@@ -14,16 +14,19 @@ export class AssignmentsService {
  
   assignements:Assignement[]= [
     {
+      id:1,
       nom:'Devoir angular',
       dateRendu:new Date('03/20/2022'),
       rendu: false
     },
     {
+      id:2,
       nom:'Devoir oracle',
       dateRendu:new Date('2/01/2022'),
       rendu: true
     },
     {
+      id:3,
       nom:'Devoir big data',
       dateRendu:new Date('03/22/2022'),
       rendu: false

@@ -16,7 +16,7 @@ export class AddAssignmentComponent implements OnInit {
   dateRendu!:Date;
   assignmentSelectionne?:Assignement;
 
-  assignements:Assignement[]= [
+  /*assignements:Assignement[]= [
     {
       nom:'Devoir angular',
       dateRendu:new Date('03/20/2022'),
@@ -32,7 +32,7 @@ export class AddAssignmentComponent implements OnInit {
       dateRendu:new Date('03/22/2022'),
       rendu: false
     }
-  ]
+  ]*/
 
   constructor(private assignmentsService:AssignmentsService) { }
 
@@ -47,6 +47,7 @@ export class AddAssignmentComponent implements OnInit {
   onSubmit(){
     console.log("nom= "+ this.nomAssignment +" date rendu= "+this.dateRendu);
     let newAssignment = new Assignement();
+    newAssignment.id = Math.round(Math.random()*10000000);
     newAssignment.nom = this.nomAssignment;
     newAssignment.dateRendu = this.dateRendu;
     newAssignment.rendu = false;
@@ -54,9 +55,11 @@ export class AddAssignmentComponent implements OnInit {
     .subscribe(message =>{
       console.log(message);
     })
+    //on ajoute ici une programme pour la soumission d'ajout de devoir
   }
 
   /*assignmentClique(assignment:Assignement){
     this.assignmentSelectionne=assignment;
   }*/
+  
 }
