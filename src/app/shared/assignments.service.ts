@@ -33,6 +33,11 @@ export class AssignmentsService {
     }
   ]
 
+  getAssignment(id:number):Observable<Assignement|undefined>{
+    let a = this.assignements.find( a=>a.id === id);
+    return of(a);
+  }
+  
   getAssignments():Observable<Assignement[]>{
     return of(this.assignements);
   }

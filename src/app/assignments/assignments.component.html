@@ -13,7 +13,7 @@
         <nav>
             <a routerLink="/assignment/{{assignement.id}}">
                 <h3 mat-subheader>{{assignement.dateRendu | date:"dd/MM/yy"}}</h3>
-                <mat-list-item (click)="assignmentClique(assignement)">
+                <mat-list-item>
                     <p *ngIf="assignement.rendu;else nonsoumis" appRendu>
                         Devoir intitulé {{assignement.nom}}.
                     </p>
@@ -25,6 +25,4 @@
             </a>
         </nav>
     </mat-list>
-    <app-assignments-detail [assignmentTransmis]="assignmentSelectionne"
-        (deleteAssignment)="onDeleteAssignment($event)"></app-assignments-detail>
 </main>

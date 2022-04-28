@@ -8,11 +8,11 @@ import { Assignement } from './assignment.modele';
   styleUrls: ['./assignments.component.css']
 })
 export class AssignmentsComponent implements OnInit {
-  prof = undefined;
-  boutonInactif= false;
-  nomAssignment!:string;
-  dateRendu!:Date;
-  assignmentSelectionne?:Assignement;
+  //prof = undefined;
+  //boutonInactif= false;
+  //nomAssignment!:string;
+  //dateRendu!:Date;
+  //assignmentSelectionne?:Assignement;
   //formVisible=false;
 
 
@@ -35,9 +35,9 @@ export class AssignmentsComponent implements OnInit {
     });
   }
 
-  buttonClique(assignment:any){
+  /*buttonClique(assignment:any){
     console.log(assignment.nom);
-  }
+  }*/
 
  /* onAddAssignmentBtnClick(){
     this.formVisible=true;
@@ -48,9 +48,9 @@ export class AssignmentsComponent implements OnInit {
   }*/
 
   //alefa ao am assignmentSelectionne izay vao clique
-  assignmentClique(assignment:Assignement){
+  /*assignmentClique(assignment:Assignement){
     this.assignmentSelectionne=assignment;
-  }
+  }*/
 
  /* onNouvelAssignement(event:Assignement){
     console.log("nampiditra vaovao!");
