@@ -4,8 +4,8 @@
     <!--mat-checkbox *ngIf="assignmentTransmis.rendu" [checked]="assignmentTransmis.rendu">Rendu</mat-checkbox-->
     <div id="bottom">
         <mat-checkbox *ngIf ="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">Rendu</mat-checkbox>
-        <button mat-stroked-button color="primary" (click)="onClickEdit()">EDIT</button>
-        <button mat-raised-button color="warn" (click)="onDelete()">
+        <button mat-stroked-button color="primary" (click)="onClickEdit()" [disabled]="!isLogged()">EDIT</button>
+        <button mat-raised-button color="warn" (click)="onDelete()" [disabled]="!isLogged()">
             Delete
         </button>
     </div>

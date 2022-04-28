@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn = true;
+  loggedIn = false;
 
   logIn(login:string, password:string){
     //normalement il faudrait envoyuer requete sur un web service pour passer login et mdp

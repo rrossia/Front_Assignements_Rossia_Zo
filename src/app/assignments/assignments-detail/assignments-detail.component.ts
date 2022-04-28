@@ -1,6 +1,7 @@
 import { Component, EventEmitter,  OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Assignement } from '../assignment.modele';
 
 @Component({
@@ -13,7 +14,7 @@ export class AssignmentsDetailComponent implements OnInit {
   //
 
   constructor(private assignmentsService: AssignmentsService, private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router, private authService:AuthService) { }
 
   ngOnInit(): void {
     //on recupere l'id
@@ -38,6 +39,10 @@ export class AssignmentsDetailComponent implements OnInit {
       },
       fragment:"edition"
     };
+  }
+
+  isLogged(){
+    return this.authService.loggedIn;
   }
 
   onAssignmentRendu() {
