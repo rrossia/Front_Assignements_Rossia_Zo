@@ -63,11 +63,4 @@ export class AssignmentsComponent implements OnInit {
     
   }*/
 
-  onDeleteAssignment(event:Assignement){
-    this.assignmentsService.deleteAssignment(event)
-    .subscribe(message =>{
-      console.log(message);
-    });
-  } 
-
 } 

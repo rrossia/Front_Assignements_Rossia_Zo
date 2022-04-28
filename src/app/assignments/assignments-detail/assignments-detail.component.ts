@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter,  OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignement } from '../assignment.modele';
 
@@ -9,11 +9,11 @@ import { Assignement } from '../assignment.modele';
   styleUrls: ['./assignments-detail.component.css']
 })
 export class AssignmentsDetailComponent implements OnInit {
- assignmentTransmis?: Assignement; //asiana input angalana ilay detail
-  @Output() deleteAssignment = new EventEmitter<Assignement>()
+  assignmentTransmis?: Assignement; //asiana input angalana ilay detail
   //
 
-  constructor(private assignmentsService: AssignmentsService, private route:ActivatedRoute) { }
+  constructor(private assignmentsService: AssignmentsService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     //on recupere l'id
@@ -21,11 +21,12 @@ export class AssignmentsDetailComponent implements OnInit {
     this.getAssignment(id);
   }
 
-  getAssignment(id:number){
+  getAssignment(id: number) {
     //on demande au service de gestion de assignments
     this.assignmentsService.getAssignment(id)
-    .subscribe(assignment =>{ this.assignmentTransmis = assignment;
-     })
+      .subscribe(assignment => {
+        this.assignmentTransmis = assignment;
+      })
   }
 
   onAssignmentRendu() {
@@ -34,21 +35,19 @@ export class AssignmentsDetailComponent implements OnInit {
       this.assignmentsService.updateAssignment(this.assignmentTransmis)
         .subscribe(message => {
           console.log(message);
+          //et on navigue vers la page d'accueil pour afficher la liste
+          this.router.navigate(["/home"]);
         });
     }
   }
 
   onDelete() {
-    //this.deleteAssignment.emit(this.assignmentTransmis);
-    //this.assignmentTransmis = undefined;
-
-    if (this.assignmentTransmis) {
-      this.assignmentsService.deleteAssignment(this.assignmentTransmis)
-        .subscribe((message) => {
-          console.log(message);
-          this.assignmentTransmis = undefined;
-        });
-    }
+    if (!this.assignmentTransmis) return;
+    this.assignmentsService.deleteAssignment(this.assignmentTransmis)
+      .subscribe(message => {
+        console.log(message);
+        this.router.navigate(["/home"]);
+      });
   }
 
 }

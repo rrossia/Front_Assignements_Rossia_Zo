@@ -1,4 +1,5 @@
 import { Component,  OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignement } from '../assignment.modele';
 
@@ -34,10 +35,10 @@ export class AddAssignmentComponent implements OnInit {
     }
   ]*/
 
-  constructor(private assignmentsService:AssignmentsService) { }
+  constructor(private assignmentsService:AssignmentsService, private router:Router) { }
 
   ngOnInit(): void {
-  }
+  } 
 
   buttonClique(assignment:any){
     console.log(assignment.nom);
@@ -45,6 +46,7 @@ export class AddAssignmentComponent implements OnInit {
 
 
   onSubmit(){
+    if((! this.nomAssignment) || (!this.dateRendu)) return;
     console.log("nom= "+ this.nomAssignment +" date rendu= "+this.dateRendu);
     let newAssignment = new Assignement();
     newAssignment.id = Math.round(Math.random()*10000000);
@@ -54,8 +56,8 @@ export class AddAssignmentComponent implements OnInit {
     this.assignmentsService.addAssignment(newAssignment)
     .subscribe(message =>{
       console.log(message);
+      this.router.navigate(["/home"]);
     })
-    //on ajoute ici une programme pour la soumission d'ajout de devoir
   }
 
   /*assignmentClique(assignment:Assignement){
