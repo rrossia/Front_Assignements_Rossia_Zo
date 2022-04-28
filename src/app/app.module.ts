@@ -21,12 +21,14 @@ import { FormsModule } from '@angular/forms';
 import { AssignmentsDetailComponent } from './assignments/assignments-detail/assignments-detail.component';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { RouterModule, Routes} from '@angular/router';
+import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 
 const routes: Routes=[
   {path:'', component:AssignmentsComponent},
   {path:'home', component:AssignmentsComponent},
   {path:'add', component:AddAssignmentComponent},
   {path:'assignment/:id',component:AssignmentsDetailComponent },
+  {path:'assignment/:id/edit',component:EditAssignmentComponent }
   ]
 
 @NgModule({
@@ -36,7 +38,8 @@ const routes: Routes=[
     RenduDirective,
     NonRenduDirective,
     AssignmentsDetailComponent,
-    AddAssignmentComponent
+    AddAssignmentComponent,
+    EditAssignmentComponent
   ],
   imports: [
     BrowserModule,
