@@ -49,9 +49,9 @@ export class AppComponent {
     this.authService .logOut();
     this.router.navigate(["/home"]);
   }
-
+/*
   genererDonneesDeTest(){
     this.AssignmentsService.peuplerDB();
-  }
+  }*/
 }
 
