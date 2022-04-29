@@ -32,7 +32,7 @@ export class EditAssignmentComponent implements OnInit {
         if (!assignment) return;
         this.assignment = assignment;
         this.nomAssignment = assignment.nom;
-        this.dateDeRendu = assignment.dateRendu;
+        this.dateDeRendu = assignment.dateDeRendu;
       });
   }
 
@@ -40,7 +40,7 @@ export class EditAssignmentComponent implements OnInit {
     if (!this.assignment) return;
     //on récupere ici les valeurs dans le formulaire
     this.assignment.nom = this.nomAssignment;
-    this.assignment.dateRendu = this.dateDeRendu;
+    this.assignment.dateDeRendu = this.dateDeRendu;
     this.assignmentsService
       .updateAssignment(this.assignment)
       .subscribe((message) => console.log(message));

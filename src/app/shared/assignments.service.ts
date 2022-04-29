@@ -34,9 +34,10 @@ export class AssignmentsService {
     return this.http.post<Assignement>(this.url,assignement);
   }
 
-  updateAssignment(assignement: Assignement): Observable<String>{
+  updateAssignment(assignement: Assignement): Observable<any>{
     this.logginService.log(assignement.nom,"modifié");
-    return of('Assignment modifié');
+    //return of('Assignment modifié');
+    return this.http.put<Assignement>(this.url,assignement);
   }
 
   deleteAssignment(assignement: Assignement): Observable<String>{
