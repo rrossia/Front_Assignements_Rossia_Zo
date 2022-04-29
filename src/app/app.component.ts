@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AssignmentsService } from './shared/assignments.service';
 import { AuthService } from './shared/auth.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class AppComponent {
     }
   }
 
-  constructor(private authService: AuthService, private router:Router) { 
+  constructor(private authService: AuthService, private router:Router, private AssignmentsService:AssignmentsService) { 
     /*setTimeout(() => {
       this.titre = "Le meilleur cours"
     }, 5000);*/
@@ -47,6 +48,10 @@ export class AppComponent {
   onClickDeconnecter(){
     this.authService .logOut();
     this.router.navigate(["/home"]);
+  }
+
+  genererDonneesDeTest(){
+    this.AssignmentsService.peuplerDB();
   }
 }
 

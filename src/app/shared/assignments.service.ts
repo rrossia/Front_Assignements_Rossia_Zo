@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Assignement } from '../assignments/assignment.modele';
 import { LoggingService } from './logging.service';
+import { bdInitialAssignments } from './data';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,18 @@ export class AssignmentsService {
     return this.http.delete<Assignement>(this.url+"/"+assignement._id);
   }
 
- 
+  peuplerDB(){
+    bdInitialAssignments.forEach(a => {
+      let newAssignment = new Assignement();
+      newAssignment.nom = a.nom;
+      newAssignment.dateDeRendu = new Date(a.dateDeRendu);
+      newAssignment.rendu = a.rendu;
+      newAssignment.id = a.id;
+      this.addAssignment(newAssignment)
+      .subscribe(reponse =>{
+        console.log(reponse.message);
+      })
+    })
+  }
 
 }
