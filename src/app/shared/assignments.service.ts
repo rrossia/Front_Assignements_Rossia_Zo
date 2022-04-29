@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Assignement } from '../assignments/assignment.modele';
@@ -8,40 +9,25 @@ import { LoggingService } from './logging.service';
 })
 export class AssignmentsService {
 
-  constructor(private logginService:LoggingService) { 
+  constructor(private logginService:LoggingService, private http:HttpClient) { 
     this.logginService.setNiveauLog(2);
   }
  
-  assignements:Assignement[]= [
-    {
-      id:1,
-      nom:'Devoir angular',
-      dateRendu:new Date('03/20/2022'),
-      rendu: false
-    },
-    {
-      id:2,
-      nom:'Devoir oracle',
-      dateRendu:new Date('2/01/2022'),
-      rendu: true
-    },
-    {
-      id:3,
-      nom:'Devoir big data',
-      dateRendu:new Date('03/22/2022'),
-      rendu: false
-    }
-  ]
+  assignements:Assignement[]= []
+
+  url = "http://localhost:8010/api/assignments";
 
   getAssignment(id:number):Observable<Assignement|undefined>{
     let a = this.assignements.find( a=>a.id === id);
-    return of(a);
+    return this.http.get<Assignement>(this.url+"/"+id);
   }
   
   getAssignments():Observable<Assignement[]>{
-    return of(this.assignements);
+    return this.http.get<Assignement[]>(this.url);
+    //return of(this.assignements);
   }
   
+
   addAssignment(assignement: Assignement): Observable<String>{
     this.assignements.push(assignement);
     this.logginService.log(assignement.nom,"ajouté");
