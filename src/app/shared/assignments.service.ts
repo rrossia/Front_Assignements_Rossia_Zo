@@ -31,6 +31,7 @@ export class AssignmentsService {
   addAssignment(assignement: Assignement): Observable<any>{
     //this.assignements.push(assignement);
     this.logginService.log(assignement.nom,"ajouté");
+    console.log("ajoute avec date "+ assignement.dateDeRendu);
     return this.http.post<Assignement>(this.url,assignement);
   }
 
@@ -40,11 +41,11 @@ export class AssignmentsService {
     return this.http.put<Assignement>(this.url,assignement);
   }
 
-  deleteAssignment(assignement: Assignement): Observable<String>{
-    let pos = this.assignements.indexOf(assignement);
-    this.assignements.splice(pos,1);
+  deleteAssignment(assignement: Assignement): Observable<any>{
+    //let pos = this.assignements.indexOf(assignement);
+    //this.assignements.splice(pos,1);
     this.logginService.log(assignement.nom,"supprimé");
-    return of('Assignment supprimé');
+    return this.http.delete<Assignement>(this.url+"/"+assignement._id);
   }
 
  

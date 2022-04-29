@@ -24,6 +24,7 @@ export class EditAssignmentComponent implements OnInit {
     let queryParams = this.route.snapshot.queryParams;
     this.getAssignment();
   }
+  
   getAssignment() {
     //on recupere l'id dans le snapshot passé par le routeur
     const id = +this.route.snapshot.params['id'];

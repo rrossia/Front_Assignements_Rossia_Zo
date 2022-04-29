@@ -14,7 +14,7 @@ export class AddAssignmentComponent implements OnInit {
 
   boutonInactif= false;
   nomAssignment!:string;
-  dateRendu!:Date;
+  dateDeRendu!:Date;
   assignmentSelectionne?:Assignement;
 
   /*assignements:Assignement[]= [
@@ -46,12 +46,12 @@ export class AddAssignmentComponent implements OnInit {
 
 
   onSubmit(){
-    if((! this.nomAssignment) || (!this.dateRendu)) return;
-    console.log("nom= "+ this.nomAssignment +" date rendu= "+this.dateRendu);
+    if((! this.nomAssignment) || (!this.dateDeRendu)) return;
+    console.log("nom= "+ this.nomAssignment +" date rendu= "+this.dateDeRendu);
     let newAssignment = new Assignement();
     newAssignment.id = Math.round(Math.random()*10000000);
     newAssignment.nom = this.nomAssignment;
-    newAssignment.dateDeRendu = this.dateRendu;
+    newAssignment.dateDeRendu = this.dateDeRendu;
     newAssignment.rendu = false;
     this.assignmentsService.addAssignment(newAssignment)
     .subscribe(reponse =>{
