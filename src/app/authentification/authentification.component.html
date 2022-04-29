@@ -1,0 +1,16 @@
+<form ngForm #assignementForm (submit)="onSubmit(); assignementForm.reset()" class="form">
+    
+<br>
+<br>
+    <mat-form-field>
+        <input matInput [(ngModel)]="login" name="Login" placeholder="login" required>
+    </mat-form-field>
+<br>
+    <mat-form-field>
+        <input matInput [(ngModel)]="password" name="Password" placeholder="password" type="password" required>
+    </mat-form-field>
+<br>
+        <button mat-stroked-button color="primary" [disabled]="((! this.login) || (!this.password))">
+            Connexion
+        </button>
+</form>

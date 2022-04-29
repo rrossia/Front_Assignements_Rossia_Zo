@@ -1,9 +1,16 @@
 <div class="container">
-<h1>
-    <nav routerLink="/home">{{titre}}</nav>
-</h1>
-<mat-slide-toggle (click)="onLoginLogout()">Login</mat-slide-toggle>
+    <h1>
+        <nav routerLink="/home">{{titre}}</nav>
+    </h1>
+        
+<button mat-raised-button color="primary" (click)="onClickConnecter()" [disabled]="isLogged()">
+     Se connecter
+</button>
 
+<button mat-raised-button color="warn" (click)="onClickDeconnecter()" [disabled]="!isLogged()">
+    Deconnexion
+</button>
+    
 </div>
 <!--app-assignments></app-assignments-->
 <router-outlet></router-outlet>  

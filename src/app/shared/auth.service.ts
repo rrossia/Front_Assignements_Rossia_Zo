@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,13 @@ export class AuthService {
     //et recevoir un token d'authentification, etc..
 
     //mais pour le moment on verifie rien
-    this.loggedIn=true;
+    if(login===null || password===null){
+      this.router.navigate(["/authentification"]);
+    }
+    else{
+      this.loggedIn=true;
+      this.router.navigate(["/home"]);
+    }
   }
 
   logOut(){
@@ -28,5 +35,5 @@ export class AuthService {
   }
  
     //isAdmin().then(admin=>{if(admin)})
-  constructor() { }
+  constructor(private router: Router) { }
 }

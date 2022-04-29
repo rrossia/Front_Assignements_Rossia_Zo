@@ -23,7 +23,7 @@ export class AppComponent {
       this.titre = "Le meilleur cours"
     }, 5000);*/
   }
-
+  
   onLoginLogout(){
     if(this.authService.loggedIn){
       //je me deloggue
@@ -34,6 +34,19 @@ export class AppComponent {
       this.authService.logIn("ras","ras");
     }
 
+  }
+  
+  isLogged(){
+    return this.authService.loggedIn;
+  }
+
+  onClickConnecter(){
+    this.router.navigate(["/authentification"]);
+  }  
+
+  onClickDeconnecter(){
+    this.authService .logOut();
+    this.router.navigate(["/home"]);
   }
 }
 
