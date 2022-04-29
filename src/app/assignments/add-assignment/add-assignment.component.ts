@@ -54,8 +54,8 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.dateRendu = this.dateRendu;
     newAssignment.rendu = false;
     this.assignmentsService.addAssignment(newAssignment)
-    .subscribe(message =>{
-      console.log(message);
+    .subscribe(reponse =>{
+      console.log(reponse.message);
       this.router.navigate(["/home"]);
     })
   }

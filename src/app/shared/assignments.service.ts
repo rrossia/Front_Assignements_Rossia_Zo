@@ -28,10 +28,10 @@ export class AssignmentsService {
   }
   
 
-  addAssignment(assignement: Assignement): Observable<String>{
-    this.assignements.push(assignement);
+  addAssignment(assignement: Assignement): Observable<any>{
+    //this.assignements.push(assignement);
     this.logginService.log(assignement.nom,"ajouté");
-    return of('Assignment ajouté');
+    return this.http.post<Assignement>(this.url,assignement);
   }
 
   updateAssignment(assignement: Assignement): Observable<String>{
