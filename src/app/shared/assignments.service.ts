@@ -17,9 +17,9 @@ export class AssignmentsService {
  
   assignements:Assignement[]= []
 
-  url = "http://localhost:8010/api/assignments";
+  //url = "http://localhost:8010/api/assignments";
  //urlMatiere = "http://localhost:8010/api/matiere";
-  //url = "https://api-assignment-rossia-zo.herokuapp.com/api/assignments"
+  url = "https://api-assignment-rossia-zo.herokuapp.com/api/assignments"
 
   getAssignment(id:number):Observable<Assignement|undefined>{
     //let a = this.assignements.find( a=>a.id == id);
