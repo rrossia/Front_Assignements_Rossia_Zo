@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentsService } from '../shared/assignments.service';
+import { DetailsService } from '../shared/details.service';
 import { Assignement } from './assignment.modele';
+import { Details } from './details.modele';
 
 
 @Component({
@@ -27,19 +29,26 @@ export class AssignmentsComponent implements OnInit {
   prevPage=0;
   nextPage=1;
   
-  constructor(private assignmentsService:AssignmentsService) { 
+  constructor(private assignmentsService:AssignmentsService,private detailsService: DetailsService) { 
    /* setTimeout(() => {
       this.boutonInactif = false 
     }, 3000);*/
   }
   
-
+  details?: Details;
   //appelé apres le constructeur et avant l'affichahge du composant
   ngOnInit(): void {
     console.log("Dans ngOnInit, appelé avant l'affichage");
     
     this.getAssignments();
   }
+
+  detailsAssignments(id:number){
+    this.detailsService.detailsAssignments(id)
+    .subscribe(detail=>{
+      this.details = detail;
+    })
+}
 
   getAssignments() {
     //on recupere ici les donnees dans le service de gestion des assignemets...

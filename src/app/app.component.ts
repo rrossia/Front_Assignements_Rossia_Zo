@@ -66,6 +66,7 @@ export class AppComponent {
       this.router.navigate(["/home"]);
     })
   }
+  
 /* genereDonneesDeTest(){
     this.assignmentsService.peuplerBD();
   }*/
