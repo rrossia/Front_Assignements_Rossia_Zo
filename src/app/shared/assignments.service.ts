@@ -26,8 +26,8 @@ export class AssignmentsService {
     return this.http.get<Assignement>(this.url+"/"+id);
   }
   
-  getAssignments():Observable<Assignement[]>{
-    return this.http.get<Assignement[]>(this.url);
+  getAssignments(page:number, limit:number):Observable<any>{
+    return this.http.get<Assignement[]>(this.url + "?page=" + page + "&limit=" + limit);
     //return of(this.assignements);
   }
 
