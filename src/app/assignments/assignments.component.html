@@ -28,51 +28,37 @@
     </div>
 
     <mat-tab-group>
-    <mat-tab label="Assignments non rendu">  
+    <mat-tab label="Assignments non rendu"> 
         <mat-card *ngFor="let assignement of assignements">
             <nav *ngIf="!assignement.rendu">
                 <a routerLink="/assignment/{{assignement.id}}">
                 <mat-card-title>{{assignement.nom}}</mat-card-title>
                     <h3 mat-subheader>{{assignement.dateDeRendu | date:"dd/MM/yy"}}</h3>
                     <mat-list-item>
-                        <p *ngIf="assignement.rendu">
+                        <p appNonRendu>
                             Devoir intitulé {{assignement.nom}} n'a pas encore rendu.
                         </p>
-                        <mat-divider></mat-divider>
                     </mat-list-item>
                 </a>
             </nav>
-            
-            <br>
-            <br>
-            
         </mat-card>
     </mat-tab>
 
     <mat-tab label="Assignments rendu">  
-
         <mat-card *ngFor="let assignement of assignements">
             <nav *ngIf="assignement.rendu">
                 <a routerLink="/assignment/{{assignement.id}}">
                 <mat-card-title>{{assignement.nom}}</mat-card-title>
                     <h3 mat-subheader>{{assignement.dateDeRendu | date:"dd/MM/yy"}}</h3>
                     <mat-list-item>
-                        <p>
+                        <p appRendu>
                             Devoir intitulé {{assignement.nom}} rendu.
                         </p>
-                        <ng-template #nonsoumis>
-                            <p>Devoir intitulé {{assignement.nom}} rendu.</p>
-                        </ng-template>
-                        <mat-divider></mat-divider>
                     </mat-list-item>
                 </a>
             </nav>
-            <br>
-            <br>
         </mat-card>
     </mat-tab>
     </mat-tab-group>
 
-
-    
 </main>
