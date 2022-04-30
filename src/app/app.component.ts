@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AssignmentsService } from './shared/assignments.service';
 import { AuthService } from './shared/auth.service';
+import { MatieresService } from './shared/matieres.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,7 @@ export class AppComponent {
     }
   }
 
-  constructor(private authService: AuthService, private router:Router) { 
+  constructor(private authService: AuthService, private router:Router,private assignmentsService: AssignmentsService, private matieresService: MatieresService) { 
     /*setTimeout(() => {
       this.titre = "Le meilleur cours"
     }, 5000);*/
@@ -48,5 +50,13 @@ export class AppComponent {
     this.authService .logOut();
     this.router.navigate(["/home"]);
   }
+
+  genereDonneesDeTest(){
+    this.assignmentsService.peuplerBD();
+  }
+
+  /*genereDonneesDeTest(){
+    this.matieresService.peuplerBD();
+  }*/
 }
 

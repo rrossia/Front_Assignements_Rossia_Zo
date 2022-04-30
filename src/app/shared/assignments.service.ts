@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { Assignement } from '../assignments/assignment.modele';
 import { LoggingService } from './logging.service';
 
+import { bdInitialAssignments } from './assignments';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,8 +17,9 @@ export class AssignmentsService {
  
   assignements:Assignement[]= []
 
-  //url = "http://localhost:8010/api/assignments";
-  url = "https://api-assignment-rossia-zo.herokuapp.com/api/assignments"
+  url = "http://localhost:8010/api/assignments";
+ //urlMatiere = "http://localhost:8010/api/matiere";
+  //url = "https://api-assignment-rossia-zo.herokuapp.com/api/assignments"
 
   getAssignment(id:number):Observable<Assignement|undefined>{
     let a = this.assignements.find( a=>a.id == id);
@@ -27,12 +30,12 @@ export class AssignmentsService {
     return this.http.get<Assignement[]>(this.url);
     //return of(this.assignements);
   }
-  
+
 
   addAssignment(assignement: Assignement): Observable<any>{
     //this.assignements.push(assignement);
     this.logginService.log(assignement.nom,"ajouté");
-    console.log("ajoute avec date "+ assignement.dateDeRendu);
+    //console.log("ajoute avec date "+ assignement.dateDeRendu);
     return this.http.post<Assignement>(this.url,assignement);
   }
 
@@ -49,6 +52,22 @@ export class AssignmentsService {
     return this.http.delete<Assignement>(this.url+"/"+assignement._id);
   }
 
- 
+
+peuplerBD(){
+  bdInitialAssignments.forEach(a=>{
+      let newAssignment = new Assignement();
+      newAssignment.dateDeRendu = new Date(a.dateDeRendu);
+      newAssignment.rendu = a.rendu;
+      newAssignment.auteur=a.auteur;
+      newAssignment.note=a.note
+      newAssignment.remarques=a.remarques;
+      newAssignment.matieresid=a.matieresid;
+      newAssignment.id = a.id;
+      this.addAssignment(newAssignment)
+      .subscribe(reponse=>{
+        console.log(reponse.message);
+      })
+  }) 
+}
 
 }
