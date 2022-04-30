@@ -46,16 +46,21 @@ Ouvrir les projets l'ide
       -mot de passe
       
  Affichage:
+ 
     -Liste assignments non rendu et rendu
+    
     -Pagination
    
  Details
+ 
     -Afficher details d'un assignment
  
  Modification (Edit)
+ 
       -Il faut être connecté pour modifier un assignment
       
  Supprimer assignments
+ 
       -Il faut être connecté pour supprimer un assignment
  
     
