@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignement } from './assignment.modele';
 
+
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
