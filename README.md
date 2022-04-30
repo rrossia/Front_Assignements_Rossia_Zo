@@ -41,7 +41,7 @@ Ouvrir les projets l'ide
      
  FONCTIONNALITES:
  
- Connection/Deconnection
+ Connexion/Deconnexion
       -login
       -mot de passe
       
@@ -50,6 +50,7 @@ Ouvrir les projets l'ide
     -Pagination
    
  Details
+    -Afficher details d'un assignment
  
  Modification (Edit)
       -Il faut être connecté pour modifier un assignment
