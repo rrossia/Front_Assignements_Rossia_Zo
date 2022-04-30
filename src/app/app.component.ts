@@ -20,7 +20,11 @@ export class AppComponent {
     }
   }
 
+<<<<<<< HEAD
   constructor(private authService: AuthService, private router:Router,private assignmentsService: AssignmentsService, private matieresService: MatieresService) { 
+=======
+  constructor(private authService: AuthService, private router:Router, private AssignmentsService:AssignmentsService) { 
+>>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
     /*setTimeout(() => {
       this.titre = "Le meilleur cours"
     }, 5000);*/
@@ -50,6 +54,7 @@ export class AppComponent {
     this.authService .logOut();
     this.router.navigate(["/home"]);
   }
+<<<<<<< HEAD
 
   genereDonneesDeTest(){
     this.assignmentsService.peuplerBD();
@@ -57,6 +62,11 @@ export class AppComponent {
 
   /*genereDonneesDeTest(){
     this.matieresService.peuplerBD();
+=======
+/*
+  genererDonneesDeTest(){
+    this.AssignmentsService.peuplerDB();
+>>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
   }*/
 }
 
