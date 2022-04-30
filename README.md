@@ -14,6 +14,8 @@ Ouvrir les projets l'ide
 3)Etape: CONFIGURATION
   Pour le front: Il faut changer en local le Url dans:
     -front/src/app/shared/assignments.service.ts en url = "http://localhost:8010/api/assignments";
-    -ront/src/app/shared/details.service.ts en url = "https://api-assignment-rossia-zo.herokuapp.com/api/details";
+    -front/src/app/shared/details.service.ts en url = "http://localhost:8010/api/details";
+    -front/src/app/shared/details.service.ts en url = "http://localhost:8010/api/matiere";
+    
     
         
