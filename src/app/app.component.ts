@@ -21,7 +21,11 @@ export class AppComponent {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(private authService: AuthService, private router:Router,private assignmentsService: AssignmentsService, private matieresService: MatieresService) { 
+=======
+  constructor(private authService: AuthService, private router:Router, private AssignmentsService:AssignmentsService) { 
+>>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
 =======
   constructor(private authService: AuthService, private router:Router, private AssignmentsService:AssignmentsService) { 
 >>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
@@ -55,6 +59,7 @@ export class AppComponent {
     this.router.navigate(["/home"]);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   genereDonneesDeTest(){
     this.assignmentsService.peuplerBD();
@@ -62,6 +67,11 @@ export class AppComponent {
 
   /*genereDonneesDeTest(){
     this.matieresService.peuplerBD();
+=======
+/*
+  genererDonneesDeTest(){
+    this.AssignmentsService.peuplerDB();
+>>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
 =======
 /*
   genererDonneesDeTest(){
