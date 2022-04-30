@@ -38,3 +38,23 @@ Ouvrir les projets l'ide
 6)Ouvrir sur le navigateur
 
       -localhot://4200 (avec le port votre serveur)
+     
+ FONCTIONNALITES:
+ 
+ Connection/Deconnection
+      -login
+      -mot de passe
+      
+ Affichage:
+    -Liste assignments non rendu et rendu
+    -Pagination
+   
+ Details
+ 
+ Modification (Edit)
+      -Il faut être connecté pour modifier un assignment
+      
+ Supprimer assignments
+      -Il faut être connecté pour supprimer un assignment
+ 
+    
