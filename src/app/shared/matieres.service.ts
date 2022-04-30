@@ -14,7 +14,7 @@ export class MatieresService {
     this.logginService.setNiveauLog(2);
    }
   
-   url = "http://localhost:8010/api/matiere";
+   url = "https://api-assignment-rossia-zo.herokuapp.com/api/matiere";
 
   addMatiere(matiere: Matiere): Observable<any>{
     this.logginService.log(matiere.nom,"ajouté");

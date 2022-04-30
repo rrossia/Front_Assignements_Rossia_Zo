@@ -9,7 +9,7 @@ import {Details } from '../assignments/details.modele';
 })
 export class DetailsService {
 
-  url = "http://localhost:8010/api/details";
+  url = "https://api-assignment-rossia-zo.herokuapp.com/api/details";
   constructor(private logginService:LoggingService, private http:HttpClient) { }
 
   detailsAssignments(id:number):Observable<any | undefined>{
