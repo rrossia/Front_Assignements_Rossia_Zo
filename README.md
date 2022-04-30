@@ -1,6 +1,7 @@
 Pour faire marcher la version en ligne du projet:
 PROJET EN LIGNE
 Lien(heroku): https://front-assignments-rossia-zo.herokuapp.com/
+Base de données mongoDb cloud: mongodb+srv://ras:ras@cluster0.cpsrb.mongodb.net/assignments?retryWrites=true&w=majority
 
 ##
 Pour faire marcher en local:
