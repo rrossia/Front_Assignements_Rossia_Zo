@@ -30,18 +30,14 @@
     <mat-tab-group>
     <mat-tab label="Assignments non rendu">  
         <mat-card *ngFor="let assignement of assignements">
-            <nav>
+            <nav *ngIf="!assignement.rendu">
                 <a routerLink="/assignment/{{assignement.id}}">
-
                 <mat-card-title>{{assignement.nom}}</mat-card-title>
                     <h3 mat-subheader>{{assignement.dateDeRendu | date:"dd/MM/yy"}}</h3>
                     <mat-list-item>
-                        <p *ngIf="assignement.rendu;else nonsoumis" appRendu>
-                            Devoir intitulé {{assignement.nom}} rendu.
+                        <p *ngIf="assignement.rendu">
+                            Devoir intitulé {{assignement.nom}} n'a pas encore rendu.
                         </p>
-                        <ng-template #nonsoumis>
-                            <p appNonRendu>Le devoir {{assignement.nom}} n'a pas encore été rendu.</p>
-                        </ng-template>
                         <mat-divider></mat-divider>
                     </mat-list-item>
                 </a>
@@ -58,7 +54,6 @@
         <mat-card *ngFor="let assignement of assignements">
             <nav *ngIf="assignement.rendu">
                 <a routerLink="/assignment/{{assignement.id}}">
-
                 <mat-card-title>{{assignement.nom}}</mat-card-title>
                     <h3 mat-subheader>{{assignement.dateDeRendu | date:"dd/MM/yy"}}</h3>
                     <mat-list-item>
@@ -66,16 +61,14 @@
                             Devoir intitulé {{assignement.nom}} rendu.
                         </p>
                         <ng-template #nonsoumis>
-                            <p appNonRendu>Le devoir {{assignement.nom}} n'a pas encore été rendu.</p>
+                            <p>Devoir intitulé {{assignement.nom}} rendu.</p>
                         </ng-template>
                         <mat-divider></mat-divider>
                     </mat-list-item>
                 </a>
             </nav>
-            
             <br>
             <br>
-            
         </mat-card>
     </mat-tab>
     </mat-tab-group>
