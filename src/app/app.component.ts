@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Details } from './assignments/details.modele';
 import { AssignmentsService } from './shared/assignments.service';
 import { AuthService } from './shared/auth.service';
+import { DetailsService } from './shared/details.service';
 import { MatieresService } from './shared/matieres.service';
 
 @Component({
@@ -21,12 +23,15 @@ export class AppComponent {
   }
 
 
-  constructor(private authService: AuthService, private router:Router,private assignmentsService: AssignmentsService, private matieresService: MatieresService) { 
-
+  constructor(private authService: AuthService, private router:Router,private assignmentsService: AssignmentsService,
+     private matieresService: MatieresService, private detailsService: DetailsService) { 
+      
     /*setTimeout(() => {
       this.titre = "Le meilleur cours"
     }, 5000);*/
   }
+  
+  details?: Details;
   
   onLoginLogout(){
     if(this.authService.loggedIn){
@@ -54,13 +59,19 @@ export class AppComponent {
   }
 
 
- /* genereDonneesDeTest(){
+  getDetails(){
+    this.detailsService.detailsAssignments(2)
+    .subscribe(detail=>{
+      this.details = detail;
+      this.router.navigate(["/home"]);
+    })
+  }
+/* genereDonneesDeTest(){
     this.assignmentsService.peuplerBD();
   }*/
 
   /*genereDonneesDeTest(){
     this.matieresService.peuplerBD();
-=======
 */
 
 }

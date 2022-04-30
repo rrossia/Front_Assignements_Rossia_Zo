@@ -1,6 +1,12 @@
 <mat-card *ngIf="assignmentTransmis">
-    <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
-    <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+    <mat-card *ngIf="details">
+        <mat-card-title>TP {{details.nomDevoir}}</mat-card-title>
+        <mat-card-subtitle>{{details.dateDeRendu | date}}</mat-card-subtitle>
+        <mat-card-subtitle>Matiere {{details.nomMatiere}}</mat-card-subtitle>
+        <!--p></p><img src="{{details.image}}"/></p-->
+        <mat-card-subtitle>Auteur du devoir {{details.auteur}}</mat-card-subtitle>
+        <mat-card-subtitle>Avec note {{details.note}}</mat-card-subtitle>
+        <!--p>Prof:<img src="{{details.image}}"/></p-->
     <!--mat-checkbox *ngIf="assignmentTransmis.rendu" [checked]="assignmentTransmis.rendu">Rendu</mat-checkbox-->
     <div id="bottom">
         <mat-checkbox *ngIf ="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">Rendu</mat-checkbox>

@@ -2,7 +2,9 @@ import { Component, EventEmitter,  OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
+import { DetailsService } from 'src/app/shared/details.service';
 import { Assignement } from '../assignment.modele';
+import { Details } from '../details.modele';
 
 @Component({
   selector: 'app-assignments-detail',
@@ -12,14 +14,24 @@ import { Assignement } from '../assignment.modele';
 export class AssignmentsDetailComponent implements OnInit {
   assignmentTransmis?: Assignement; //asiana input angalana ilay detail
   //
+  details?: Details;
+
 
   constructor(private assignmentsService: AssignmentsService, private route: ActivatedRoute,
-    private router: Router, private authService:AuthService) { }
+    private router: Router, private authService:AuthService, private detailsService: DetailsService) { }
 
   ngOnInit(): void {
-    //on recupere l'id
+    //on recupere l'id, de ce qu'on click sur le devoir
     const id = +this.route.snapshot.params['id'];
     this.getAssignment(id);
+    this.detailsAssignments(id);
+  }
+
+  detailsAssignments(id:number){
+      this.detailsService.detailsAssignments(id)
+      .subscribe(detail=>{
+        this.details = detail;
+      })
   }
 
   getAssignment(id: number) {

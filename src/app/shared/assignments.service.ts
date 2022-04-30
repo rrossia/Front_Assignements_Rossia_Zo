@@ -22,7 +22,7 @@ export class AssignmentsService {
   //url = "https://api-assignment-rossia-zo.herokuapp.com/api/assignments"
 
   getAssignment(id:number):Observable<Assignement|undefined>{
-    let a = this.assignements.find( a=>a.id == id);
+    //let a = this.assignements.find( a=>a.id == id);
     return this.http.get<Assignement>(this.url+"/"+id);
   }
   
@@ -52,10 +52,13 @@ export class AssignmentsService {
     return this.http.delete<Assignement>(this.url+"/"+assignement._id);
   }
 
+
+
 peuplerBD(){
   bdInitialAssignments.forEach(a=>{
       let newAssignment = new Assignement();
       newAssignment.dateDeRendu = new Date(a.dateDeRendu);
+      newAssignment.nom = a.nom;
       newAssignment.rendu = a.rendu;
       newAssignment.auteur=a.auteur;
       newAssignment.note=a.note
