@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignement } from './assignment.modele';
 
+
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
@@ -17,6 +18,14 @@ export class AssignmentsComponent implements OnInit {
 
 
   assignements:Assignement[] = [];
+  page=1;
+  limit=10;
+  totalPages=0;
+  pagingCounter=0;
+  hasNextPage=true;
+  hasPrevPage=false;
+  prevPage=0;
+  nextPage=1;
   
   constructor(private assignmentsService:AssignmentsService) { 
    /* setTimeout(() => {
@@ -28,11 +37,45 @@ export class AssignmentsComponent implements OnInit {
   //appelé apres le constructeur et avant l'affichahge du composant
   ngOnInit(): void {
     console.log("Dans ngOnInit, appelé avant l'affichage");
+    
+    this.getAssignments();
+  }
+
+  getAssignments() {
     //on recupere ici les donnees dans le service de gestion des assignemets...
-    this.assignmentsService.getAssignments()
-    .subscribe(assignements=>{
-      this.assignements=assignements;
+    this.assignmentsService.getAssignments(this.page, this.limit)
+    .subscribe(reponse=>{
+      this.assignements=reponse.docs;
+      this.page=reponse.page;
+      this.limit=reponse.limit;
+      this.totalPages=reponse.totalPages;
+      this.pagingCounter=reponse.pagingCounter;
+      this.hasNextPage=reponse.hasNextPage;
+      this.hasPrevPage=reponse.hasPrevPage;
+      this.prevPage=reponse.prevPage;
+      this.nextPage=reponse.nextPage;
     });
+  }
+
+  pagePrecedente() {
+    this.page--;
+    this.getAssignments();
+  }
+
+  pageSuivante() {
+    this.page++;
+    this.getAssignments();
+
+  }
+
+  premierePage() {
+    this.page = 1;
+    this.getAssignments();
+  }
+
+  dernierePage() {
+    this.page = this.totalPages;
+    this.getAssignments();
   }
 
   /*buttonClique(assignment:any){
