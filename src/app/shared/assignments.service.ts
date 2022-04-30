@@ -51,9 +51,6 @@ export class AssignmentsService {
     this.logginService.log(assignement.nom,"supprimé");
     return this.http.delete<Assignement>(this.url+"/"+assignement._id);
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 
 peuplerBD(){
   bdInitialAssignments.forEach(a=>{
@@ -71,9 +68,4 @@ peuplerBD(){
       })
   }) 
 }
-
-=======
->>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
-=======
->>>>>>> 8497fe99327cc84c0d53d65fb8cd8e7b25e1ed0f
 }
