@@ -16,6 +16,18 @@ Ouvrir les projets l'ide
     -front/src/app/shared/assignments.service.ts en url = "http://localhost:8010/api/assignments";
     -front/src/app/shared/details.service.ts en url = "http://localhost:8010/api/details";
     -front/src/app/shared/details.service.ts en url = "http://localhost:8010/api/matiere";
+		
+4)Lancer le back
+			-node server.js
+			
+			
+			
+5)Lancer le front
+			-ng serve
+			
+			
+			
+6)
     
     
         
